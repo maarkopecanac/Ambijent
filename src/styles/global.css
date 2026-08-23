@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #4d5eab;
+  --color-secondary: #4d5eab;
+  --color-gray-light: #f8fafc;
+}
+
+body {
+  @apply bg-gray-light;
+}
+
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Navigacija - glatki prelaz */
+nav {
+  transition: background 0.4s ease-in-out, box-shadow 0.4s ease-in-out !important;
+}
+
+.nav-transparent {
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.nav-solid {
+  background: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Linkovi - glatki prelaz */
+.nav-link {
+  transition: color 0.3s ease-in-out, background 0.3s ease-in-out !important;
+}
+
+.nav-transparent .nav-link {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.nav-transparent .nav-link:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+.nav-solid .nav-link {
+  color: rgba(0, 0, 0, 0.8) !important;
+}
+
+.nav-solid .nav-link:hover {
+  color: #4d5eab !important;
+  background: rgba(77, 94, 171, 0.1) !important;
+}
+
+/* Logo tekst - glatki prelaz */
+.logo-text {
+  transition: color 0.4s ease-in-out !important;
+}
+
+.nav-transparent .logo-text {
+  color: #ffffff !important;
+}
+
+.nav-solid .logo-text {
+  color: #1a1a1a !important;
+}
+
+/* Hamburger ikonica - glatki prelaz */
+.hamburger-icon {
+  transition: color 0.4s ease-in-out !important;
+}
+
+.hamburger-icon svg {
+  transition: stroke 0.4s ease-in-out !important;
+}
+
+.nav-transparent .hamburger-icon {
+  color: #ffffff !important;
+}
+
+.nav-transparent .hamburger-icon svg {
+  stroke: #ffffff !important;
+}
+
+.nav-solid .hamburger-icon {
+  color: #1a1a1a !important;
+}
+
+.nav-solid .hamburger-icon svg {
+  stroke: #1a1a1a !important;
+}
+
+/* Aktivni link u navigaciji - glatki prelaz */
+.nav-link.active-link {
+  font-weight: 600 !important;
+  transition: all 0.3s ease;
+}
+
+/* Transparentna navigacija - aktivni link */
+.nav-transparent .nav-link.active-link {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Bijela navigacija - aktivni link */
+.nav-solid .nav-link.active-link {
+  color: #4d5eab !important;
+  background: rgba(77, 94, 171, 0.15) !important;
+}
