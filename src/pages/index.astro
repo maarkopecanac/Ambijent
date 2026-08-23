@@ -225,7 +225,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <div class="order-2">
         <span class="text-[#4d5eab] font-semibold text-sm uppercase tracking-wider">Naša misija</span>
-        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mt-2 mb-4">Zašto postojimo</h3>
+        <h3 class="text-2xl md:text-4xl font-bold text-gray-900 mt-2 mb-4">Zašto postojimo</h3>
         <p class="text-gray-600 mb-4">
           Misija nam je jednostavna – da vam ponudimo više od okova. To su povjerenje, podrška i rješenja koja traju.
         </p>
@@ -237,20 +237,25 @@ import Layout from '../layouts/Layout.astro';
   </div>
 </section>
 
-  <!-- CTA SEKCIJA (Zatražite ponudu) -->
-  <section id="cta" class="py-20 bg-gray-50 min-h-[300px]">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-      <h2 class="text-4xl font-bold text-gray-900 mb-4">
-        Trebate kvalitetne okove?
-      </h2>
-      <p class="text-xl text-gray-600 mb-8">
-        Kontaktirajte nas za ponudu ili savjet. Odaberite pouzdanost i profesionalnost.
-      </p>
+<!-- CTA SEKCIJA -->
+<section id="cta" class="py-20 bg-gray-50">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-4xl font-bold text-gray-900 mb-4">
+      Trebate kvalitetne okove?
+    </h2>
+    <p class="text-xl text-gray-600 mb-8">
+      Kontaktirajte nas za ponudu ili savjet. Odaberite pouzdanost i profesionalnost.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-6 justify-center">
       <a href="#kontakt-forma" class="inline-block bg-[#4d5eab] text-white px-10 py-4 rounded-lg font-semibold hover:bg-[#3d4e8a] transition shadow-lg shadow-[#4d5eab]/30">
         Zatražite ponudu
       </a>
+      <a href="/KATALOG.pdf?inline" target="_blank" class="inline-block bg-[#4d5eab] text-white px-10 py-4 rounded-lg font-semibold hover:bg-[#3d4e8a] transition shadow-lg shadow-[#4d5eab]/30">
+        Pogledajte katalog
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- KONTAKT SEKCIJA -->
 <section id="kontakt" class="py-20 bg-white">
@@ -340,7 +345,7 @@ import Layout from '../layouts/Layout.astro';
       </div>
     </div>
 
-    <!-- Donji dio: Kontakt forma (kao na Adaptivi) -->
+    <!-- Donji dio: Kontakt forma -->
 <div class="max-w-3xl mx-auto">
   <div class="text-center mb-10">
     <h3 id="kontakt-forma" class="text-2xl font-bold text-gray-900">Pošaljite nam poruku</h3>
@@ -371,7 +376,6 @@ import Layout from '../layouts/Layout.astro';
         <option value="upit">Upit o proizvodima</option>
         <option value="narudzba">Narudžba</option>
         <option value="savjet">Savjet za odabir okova</option>
-        <option value="cjenovnik">Zatražite cjenovnik</option>
         <option value="ostalo">Ostalo</option>
       </select>
     </div>
@@ -471,7 +475,7 @@ import Layout from '../layouts/Layout.astro';
   </div>
   
   <!-- Desno: Zapratite nas -->
-  <div class="flex items-center gap-3">
+  <div class="flex items-center gap-3 ">
     <span class="text-gray-400">Zapratite nas</span>
     <a href="https://www.instagram.com/ambijent_bn/" target="_blank" class="text-gray-400 hover:text-white transition" aria-label="Instagram">
       <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -556,26 +560,28 @@ import Layout from '../layouts/Layout.astro';
 <script>
   let lastScrollTop = 0;
   const navbar = document.querySelector('nav');
+  let ticking = false;
+
+  function onScroll() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > 100 && scrollTop > lastScrollTop) {
+      // Skrolovanje prema dolje - sakrij (brzo)
+      navbar.classList.add('nav-hidden');
+    } else {
+      // Skrolovanje prema gore ili na vrhu - prikaži (sporo, glatko)
+      navbar.classList.remove('nav-hidden');
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    ticking = false;
+  }
 
   window.addEventListener('scroll', function() {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    
-    if (scrollTop > 100) {
-      if (scrollTop > lastScrollTop) {
-        // Skrolovanje prema dolje - sakrij navigaciju
-        navbar.style.transform = 'translateY(-100%)';
-        navbar.style.transition = 'transform 0.3s ease-in-out';
-      } else {
-        // Skrolovanje prema gore - prikaži navigaciju
-        navbar.style.transform = 'translateY(0)';
-        navbar.style.transition = 'transform 0.3s ease-in-out';
-      }
-    } else {
-      // Na vrhu stranice - uvijek vidljiva
-      navbar.style.transform = 'translateY(0)';
+    if (!ticking) {
+      window.requestAnimationFrame(onScroll);
+      ticking = true;
     }
-    
-    lastScrollTop = scrollTop;
   });
 </script>
 
