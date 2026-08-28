@@ -3,14 +3,40 @@ import '../styles/global.css'
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="bs">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Ambijent - Okovi za namještaj</title>
+		
+		<!-- Favicon -->
+		<link rel="icon" type="image/svg+xml" href="favicon_io/favicon.svg" />
+		<link rel="icon" href="favicon_io/favicon.ico" />
+		<link rel="apple-touch-icon" href="favicon_io/apple-touch-icon.png" />
+		
+		<!-- SEO - Title i Description -->
+		<title>Ambijent Bijeljina | Okovi za namještaj</title>
+		<meta name="description" content="Prodaja okova za izradu namještaja i sobnih vrata. Širok asortiman, brza isporuka i kvalitetni brendovi – Blum, GTV, Sige, Inoxa i drugi." />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href="https://ambijent.netlify.app" />
+		
+		<!-- Strukturirani podaci (JSON-LD) -->
+		<script type="application/ld+json">
+		{
+			"@context": "https://schema.org",
+			"@type": "Organization",
+			"name": "Ambijent",
+			"description": "Prodaja okova za izradu namještaja i sobnih vrata.",
+			"address": {
+				"@type": "PostalAddress",
+				"streetAddress": "Filipa Višnjića 50",
+				"addressLocality": "Bijeljina",
+				"addressCountry": "BA"
+			},
+			"telephone": "+38765882881",
+			"email": "ambijentbn@gmail.com"
+		}
+		</script>
+		
 		<!-- Google Font: Nunito -->
 		<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 	</head>
