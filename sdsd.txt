@@ -1,0 +1,6 @@
+cd C:\Users\Marko\ambijent-web 
+
+$env:Path = "C:\Program Files\nodejs;" + $env:Path
+node -v
+npm -v
+npm run dev
