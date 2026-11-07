@@ -1,0 +1,5 @@
+﻿[[redirects]]
+  from = "https://ambijent.netlify.app/*"
+  to = "https://ambijentbn.com/:splat"
+  status = 301
+  force = true
